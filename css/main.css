@@ -1,0 +1,141 @@
+:root {
+    background-color: #f9fafb;
+}
+
+h1 {
+    font-size: 3rem;
+    padding-bottom: 50px
+}
+
+p {
+    text-align: justify;
+}
+
+.align-content-center {
+    text-align: -webkit-center;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.logo-container {
+    margin: 50px;
+    text-align: center;
+    width: 75%;
+}
+
+.green-button {
+    background-color: #00a651;
+    color: white;
+    padding: 30px 35px;
+    /*    border-radius: 30px;*/
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.click-icon-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.click-icon {
+    /*    border: 1px solid #ccc;*/
+    /*    padding: 10px;*/
+    /*    border-radius: 5px;*/
+    width: 300px;
+}
+
+
+.popup {
+    position: fixed;
+    bottom: 20px;
+    left: 85%;
+    transform: translateX(-50%);
+    /*    width: 150px;*/
+    /*    background-color: #79c8a0;*/
+    /*    color: #000000;*/
+    /*    text-align: center;*/
+    /*    border-radius: 6px;*/
+    padding: 15px;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 2s, opacity 2s, fadeIn;
+    resize: none;
+}
+
+/*!* Popup arrow *!*/
+/*.popup::after {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    left: 75%;*/
+/*    margin-left: -5px;*/
+/*    border-width: 5px;*/
+/*    border-style: solid;*/
+/*    border-color: #79c8a0 transparent transparent transparent;*/
+/*}*/
+
+/* Toggle this class - hide and show the popup */
+.popup.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.popup-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.footer {
+    position: fixed;
+    bottom: 50px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.video {
+    /*    grid-column: 1;*/
+}
+.photos {
+    grid-column: 2 / 6;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.photos-4 {
+    grid-column: 1 / 6;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+h4 {
+    text-align: left;
+    color: #009f4d;
+    border-bottom: solid;
+    font-size: 2em;
+}
+
+@layer utilities {
+    .p-4 {
+        padding: calc(var(--spacing)*4);
+    }
+}

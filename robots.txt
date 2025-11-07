@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Allow: /
+Sitemap: https://technopieuxlouis.github.io/sitemap.xml
