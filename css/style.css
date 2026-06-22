@@ -446,8 +446,8 @@ body.contact-active .nav-logo-center {
 .contact-cards {
     display: flex;
     gap: 1.5rem;
-    max-width: 900px;
-    width: 100%;
+    max-width: 80%;
+    /*    width: 100%;*/
 }
 
 .contact-card-info {
