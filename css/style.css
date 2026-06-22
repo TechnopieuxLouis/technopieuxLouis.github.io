@@ -532,10 +532,9 @@ body.contact-active .nav-logo-center {
 }
 
 .qr-label {
-    font-size: 0.9rem;
+    font-size: 3rem;
     font-weight: 700;
     color: var(--green);
-    letter-spacing: 0.03em;
     text-transform: uppercase;
 }
 
