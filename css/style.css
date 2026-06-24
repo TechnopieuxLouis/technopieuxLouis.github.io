@@ -327,6 +327,7 @@ body.contact-active .nav-logo-center {
 .slide-media .placeholder {
     border-radius: 10px;
     object-fit: cover;
+    max-width: 80%;
 }
 
 
@@ -351,7 +352,7 @@ body.contact-active .nav-logo-center {
     height: 380px;
 }
 
-.placeholder--grid {
+.grid2 {
     width: calc(50% - 0.375rem);
     height: 160px;
 }
