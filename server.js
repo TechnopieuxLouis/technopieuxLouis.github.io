@@ -13,6 +13,7 @@ const server = http.createServer((req, res) => {
         '.svg': 'image/svg+xml',
         '.jpg': 'image/jpeg',
         '.mp4': 'video/mp4',
+        '.heic': 'image/heif',
     };
 
     const contentType = mimeTypes[extname] || 'application/octet-stream';
