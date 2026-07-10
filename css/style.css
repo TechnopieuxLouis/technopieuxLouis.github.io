@@ -286,6 +286,7 @@ body.contact-active .nav-logo-center {
     line-height: 1.8;
     margin-top: 2rem;
     text-align: justify;
+    hyphens: auto;
 }
 
 .slide-icon-svg {
