@@ -521,10 +521,10 @@ body.contact-active .nav-logo-center {
     justify-content: center;
 }
 
-/*.contact-cards.qr-only .contact-card-qr {*/
-/*    flex: none;*/
-/*    width: 320px;*/
-/*}*/
+.contact-cards.qr-only .contact-card-qr {
+    flex: none;
+    width: 320px;
+}
 
 
 /* ═══════════════════════════════════════
