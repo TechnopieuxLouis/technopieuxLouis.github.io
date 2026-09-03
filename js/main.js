@@ -179,7 +179,7 @@ document.querySelectorAll('.carousel-page').forEach(page => {
     const cardsWrapper = document.querySelector('.contact-cards');
 
     if (params.get('barcode') === 'show' && infoBlock) {
-        infoBlock.style.display = '';
+        infoBlock.style.display = 'block';
     } else if (cardsWrapper) {
         cardsWrapper.classList.add('qr-only');
     }
