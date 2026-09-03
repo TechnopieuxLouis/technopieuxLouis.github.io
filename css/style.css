@@ -513,6 +513,19 @@ body.contact-active .nav-logo-center {
     text-transform: uppercase;
 }
 
+#contact-info-block {
+    display: none;
+}
+
+.contact-cards.qr-only {
+    justify-content: center;
+}
+
+/*.contact-cards.qr-only .contact-card-qr {*/
+/*    flex: none;*/
+/*    width: 320px;*/
+/*}*/
+
 
 /* ═══════════════════════════════════════
    RESPONSIVE (≤ 768px)

@@ -4,7 +4,7 @@
 
 const BOTTOM_NAV = [
     {id: 'what-is-tmp', label: 'WHAT IS TMP?'},
-    {id: 'why-tmp', label: 'WHY CHOOSING TMP?'},
+    {id: 'why-tmp', label: 'WHY CHOOSE TMP?'},
     {id: 'projects', label: 'TYPES OF PROJECTS'},
     {id: 'faq', label: 'FAQ'},
 ];
@@ -168,6 +168,22 @@ document.querySelectorAll('.carousel-page').forEach(page => {
     goTo(0);
 });
 
+// ═══════════════════════════════════════
+// CONTACT PAGE — bloc code-barres selon paramètre URL
+// ?barcode=show → affiche le bloc
+// (absent ou toute autre valeur) → bloc masqué (par défaut)
+// ═══════════════════════════════════════
+(function () {
+    const params = new URLSearchParams(window.location.search);
+    const infoBlock = document.getElementById('contact-info-block');
+    const cardsWrapper = document.querySelector('.contact-cards');
+
+    if (params.get('barcode') === 'show' && infoBlock) {
+        infoBlock.style.display = '';
+    } else if (cardsWrapper) {
+        cardsWrapper.classList.add('qr-only');
+    }
+})();
 
 // ═══════════════════════════════════════
 // DEFAULT PAGE
