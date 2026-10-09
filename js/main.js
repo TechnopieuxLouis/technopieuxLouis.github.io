@@ -2,13 +2,6 @@
 // CONFIG
 // ═══════════════════════════════════════
 
-const BOTTOM_NAV = [
-    {id: 'what-is-tmp', label: 'WHAT IS TMP?'},
-    {id: 'why-tmp', label: 'WHY CHOOSE TMP?'},
-    {id: 'projects', label: 'TYPES OF PROJECTS'},
-    {id: 'faq', label: 'FAQ'},
-];
-
 const CAROUSEL_PAGES = ['what-is-tmp', 'why-tmp', 'projects', 'faq'];
 
 
@@ -20,12 +13,12 @@ function createBottomNav(currentPageId) {
     const nav = document.createElement('div');
     nav.className = 'bottom-nav';
 
-    BOTTOM_NAV.forEach(item => {
+    CAROUSEL_PAGES.forEach(id => {
         const btn = document.createElement('a');
         btn.href = '#';
-        btn.className = 'bottom-nav-btn' + (item.id === currentPageId ? ' active' : '');
-        btn.dataset.page = item.id;
-        btn.textContent = item.label;
+        btn.className = 'bottom-nav-btn' + (id === currentPageId ? ' active' : '');
+        btn.dataset.page = id;
+        btn.dataset.i18n = 'bottom.' + id;
         nav.appendChild(btn);
     });
 
@@ -186,7 +179,59 @@ document.querySelectorAll('.carousel-page').forEach(page => {
 })();
 
 // ═══════════════════════════════════════
+// I18N — langue via ?lang=es (défaut : en)
+// Exemple : index.html?lang=es&barcode=show
+// ═══════════════════════════════════════
+
+const SUPPORTED_LANGS = ['en', 'es'];
+const DEFAULT_LANG = 'en';
+
+function getLang() {
+    const l = (new URLSearchParams(window.location.search).get('lang') || '').toLowerCase().slice(0, 2);
+    return SUPPORTED_LANGS.includes(l) ? l : DEFAULT_LANG;
+}
+
+async function loadDict(lang) {
+    const res = await fetch(`lang/${lang}.json`);
+    if (!res.ok) throw new Error(`HTTP ${res.status} for lang/${lang}.json`);
+    return res.json();
+}
+
+function applyDict(dict, lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const value = dict[el.dataset.i18n];
+        if (value === undefined) {
+            console.warn('Missing i18n key:', el.dataset.i18n);
+            return;
+        }
+        el.innerHTML = value; // innerHTML : les textes contiennent des <br/>
+    });
+    if (dict['meta.title']) document.title = dict['meta.title'];
+    document.documentElement.lang = lang;
+}
+
+async function initI18n() {
+    document.body.style.visibility = 'hidden'; // évite d'afficher des blocs vides
+    const lang = getLang();
+    try {
+        applyDict(await loadDict(lang), lang);
+    } catch (err) {
+        console.error('i18n load failed:', err);
+        if (lang !== DEFAULT_LANG) {
+            try {
+                applyDict(await loadDict(DEFAULT_LANG), DEFAULT_LANG);
+            } catch (err2) {
+                console.error('i18n fallback failed:', err2);
+            }
+        }
+    } finally {
+        document.body.style.visibility = '';
+    }
+}
+
+
+// ═══════════════════════════════════════
 // DEFAULT PAGE
 // ═══════════════════════════════════════
 
-showPage('home');
+initI18n().then(() => showPage('home'));
